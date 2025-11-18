@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pkgmetadata>
+  <maintainer type="person">
+    <name>Wabar</name>
+  </maintainer>
+
+  <use>
+    <flag name="X">Enable Xwayland support</flag>
+    <flag name="guiutils">Enable some menus</flag>
+    <flag name="systemd">Enable use of systemd-specific libraries and features like socket activation or session tracking</flag>
+    <flag name="hyprpm">Enable the hyprpm (hypr plugin manager)</flag>
+  </use>
+</pkgmetadata>
+
