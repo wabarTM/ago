@@ -1,9 +1,9 @@
 EAPI=8
-inherit cmake toolchain-funcs
+inherit cmake toolchain-funcs git-r3
 
 DESCRIPTION="Official implementation library for the hypr config language"
 HOMEPAGE="https://github.com/hyprwm/hyprlang"
-EDIT_REPO_URI="https://github.com/hyprwm/hyprlang.git"
+EGIT_REPO_URI="https://github.com/hyprwm/hyprlang.git"
 
 LICENSE="LGPL-3"
 SLOT="0"
@@ -18,3 +18,4 @@ pkg_setup() {
 	tc-check-min_ver gcc 15
 	tc-check-min_ver clang 19
 }
+
