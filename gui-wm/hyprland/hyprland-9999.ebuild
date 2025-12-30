@@ -69,10 +69,16 @@ pkg_setup() {
 	tc-check-min_ver clang 19
 }
 
-#src_prepare() {
-#	default
-#	cmake_src_prepare
-#}
+src_prepare() {
+	eapply "${FILESDIR}"/0000-remove-start-hyprland.patch
+	eapply "${FILESDIR}"/0001-no-watchdog.patch
+	eapply_user
+
+	rm -rf start/
+
+	default
+	cmake_src_prepare
+}
 
 src_configure() {
 	local mycmakeargs=(

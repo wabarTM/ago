@@ -1,0 +1,6 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -557,3 +557,2 @@
+ add_subdirectory(hyprctl)
+-add_subdirectory(start)
+
