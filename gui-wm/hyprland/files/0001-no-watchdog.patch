@@ -1,6 +1,6 @@
 --- a/src/main.cpp
 +++ b/src/main.cpp
-@@ -213,13 +213,3 @@
+@@ -213,14 +213,4 @@
      reapZombieChildrenAutomatically();
 -
 -     bool watchdogOk = watchdogFd > 0;
@@ -12,6 +12,6 @@
 -
 -     if (!watchdogOk)
 -         Log::logger->log(Log::WARN, "WARNING: Hyprland is being launched without start-hyprland. This is highly advised against.");
--
+
      g_pCompositor->initServer(socketName, socketFd);
 
