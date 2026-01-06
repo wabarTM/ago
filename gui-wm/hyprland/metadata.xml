@@ -8,7 +8,8 @@
     <flag name="X">Enable Xwayland support</flag>
     <flag name="guiutils">Enable some menus</flag>
     <flag name="systemd">Enable use of systemd-specific libraries and features like socket activation or session tracking</flag>
-    <flag name="hyprpm">Enable the hyprpm (hypr plugin manager)</flag>
+	<flag name="hyprpm">Enable the hyprpm (hypr plugin manager)</flag>
+	<flag name="xwmfix">Fixes xwayland for me, use with caution</flag>
   </use>
 </pkgmetadata>
 

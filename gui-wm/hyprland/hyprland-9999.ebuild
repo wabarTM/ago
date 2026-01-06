@@ -7,9 +7,13 @@ inherit cmake toolchain-funcs git-r3
 DESCRIPTION="A dynamic tiling Wayland compositor that doesn't sacrifice on its looks"
 HOMEPAGE="https://github.com/hyprwm/Hyprland"
 EGIT_REPO_URI="https://github.com/hyprwm/Hyprland.git"
+#EGIT_COMMIT="920353370bba555010506a1c0b204675c60362fe" # first bad, maybe fixed later?
+#EGIT_COMMIT="834f019bab5df85b912a7aab7054fc8306f7c52a"
+#EGIT_COMMIT="3bbbb5aaca3a79005f7c2fea2b7bba66e9da5ce8"
+#EGIT_COMMIT="09e195d1f293a876ce21a077af3d7c5047881b79"
 LICENSE="BSD"
 SLOT="0"
-IUSE="X -guiutils systemd hyprpm"
+IUSE="X -guiutils systemd hyprpm xwmfix"
 
 RDEPEND="
 	dev-cpp/muParser
@@ -72,6 +76,9 @@ pkg_setup() {
 src_prepare() {
 	eapply "${FILESDIR}"/0000-remove-start-hyprland.patch
 	eapply "${FILESDIR}"/0001-no-watchdog.patch
+	if use xwmfix; then
+		eapply "${FILESDIR}"/0002-fix-xwayland.patch
+	fi
 	eapply_user
 
 	rm -rf start/
@@ -85,6 +92,8 @@ src_configure() {
 		# i have 0 fucking clues how to fix mutlilib issue,
 		# so i will just disable whole testing module
 		-DBUILD_TESTING:BOOL=false
+
+		#-DCMAKE_BUILD_TYPE:STRING=Debug
 
 		-DNO_XWAYLAND:STRING=$(usex X false true)
 		-DNO_SYSTEMD:STRING=$(usex systemd false true)
