@@ -10,6 +10,7 @@
     <flag name="systemd">Enable use of systemd-specific libraries and features like socket activation or session tracking</flag>
 	<flag name="hyprpm">Enable the hyprpm (hypr plugin manager)</flag>
 	<flag name="xwmfix">Fixes xwayland for me, use with caution</flag>
+	<flag name="noengine">Removes all i18n translation except english</flag>
   </use>
 </pkgmetadata>
 

@@ -13,7 +13,7 @@ EGIT_REPO_URI="https://github.com/hyprwm/Hyprland.git"
 #EGIT_COMMIT="09e195d1f293a876ce21a077af3d7c5047881b79"
 LICENSE="BSD"
 SLOT="0"
-IUSE="X -guiutils systemd hyprpm xwmfix"
+IUSE="X -guiutils systemd hyprpm xwmfix noengine"
 
 RDEPEND="
 	dev-cpp/muParser
@@ -74,15 +74,21 @@ pkg_setup() {
 }
 
 src_prepare() {
+	rm -rf start/
+
 	eapply "${FILESDIR}"/0000-remove-start-hyprland.patch
 	eapply "${FILESDIR}"/0001-no-watchdog.patch
+
 	if use xwmfix; then
 		eapply "${FILESDIR}"/0002-fix-xwayland.patch
 	fi
+
+	if use noengine; then
+		printf "" > src/i18n/Engine.cpp
+		eapply "${FILESDIR}"/0003-only-english-in-i18n.patch
+	fi
+
 	eapply_user
-
-	rm -rf start/
-
 	default
 	cmake_src_prepare
 }
