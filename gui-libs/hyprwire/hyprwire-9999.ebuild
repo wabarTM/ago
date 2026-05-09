@@ -1,5 +1,5 @@
 EAPI=8
-inherit cmake git-r3 toolchain-funcs
+inherit cmake toolchain-funcs git-r3
 
 DESCRIPTION="A fast and consistent wire protocol for IPC"
 HOMEPAGE="https://github.com/hyprwm/hyprwire"
@@ -15,4 +15,14 @@ BDEPEND=""
 pkg_setup() {
 	tc-check-min_ver gcc 15
 	tc-check-min_ver clang 19
+}
+
+src_prepare() {
+	rm -rf tests/
+
+	eapply "${FILESDIR}"/0000-remove-tests.patch
+
+	eapply_user
+	default
+	cmake_src_prepare
 }

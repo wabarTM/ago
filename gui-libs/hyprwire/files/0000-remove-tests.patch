@@ -1,0 +1,62 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -13,1 +13,0 @@
+-include(CTest)
+@@ -62,1 +62,0 @@
+-  set(outdir "${CMAKE_SOURCE_DIR}/tests/generated")
+@@ -109,55 +109,0 @@
+-# tests
+-if(BUILD_TESTING)
+-  message(STATUS "building tests is enabled")
+-
+-  enable_testing()
+-
+-  # Server + Client tests
+-  add_custom_target(tests)
+-
+-  message(STATUS "generating protocols")
+-  protocol("${CMAKE_SOURCE_DIR}/tests" "protocol-v1" TRUE "test_protocol_v1"
+-           CLIENT_GEN)
+-  protocol("${CMAKE_SOURCE_DIR}/tests" "protocol-v1" FALSE "test_protocol_v1"
+-           SERVER_GEN)
+-  add_executable(client "${CMAKE_SOURCE_DIR}/tests/Client.cpp"
+-                        "tests/generated/test_protocol_v1-client.cpp")
+-  target_link_libraries(client PRIVATE PkgConfig::deps hyprwire)
+-  add_dependencies(tests client)
+-
+-  add_executable(server "${CMAKE_SOURCE_DIR}/tests/Server.cpp"
+-                        "tests/generated/test_protocol_v1-server.cpp")
+-  target_link_libraries(server PRIVATE PkgConfig::deps hyprwire)
+-  add_dependencies(tests server)
+-
+-  add_executable(fork "${CMAKE_SOURCE_DIR}/tests/Fork.cpp"
+-                        "tests/generated/test_protocol_v1-client.cpp"
+-                        "tests/generated/test_protocol_v1-server.cpp")
+-  target_link_libraries(fork PRIVATE PkgConfig::deps hyprwire)
+-  add_dependencies(tests fork)
+-
+-  # GTests
+-  find_package(GTest CONFIG REQUIRED)
+-  include(GoogleTest)
+-  file(GLOB_RECURSE TESTFILES CONFIGURE_DEPENDS "tests/unit/*.cpp")
+-  add_executable(hyprwire_tests ${TESTFILES})
+-
+-  target_compile_options(hyprwire_tests PRIVATE --coverage -fsanitize=address)
+-  target_link_options(hyprwire_tests PRIVATE --coverage)
+-  
+-  target_include_directories(
+-    hyprwire_tests
+-    PUBLIC "./include"
+-    PRIVATE "./src" "./src/include" "./protocols" "${CMAKE_BINARY_DIR}")
+-  target_link_libraries(hyprwire_tests PRIVATE asan hyprwire GTest::gtest_main
+-                                                       PkgConfig::deps)
+-  gtest_discover_tests(hyprwire_tests
+-    PROPERTIES ENVIRONMENT "ASAN_OPTIONS=detect_leaks=0"
+-  )
+-
+-  # Add coverage to hyprwire for test builds
+-  target_compile_options(hyprwire PRIVATE --coverage)
+-  target_link_options(hyprwire PRIVATE --coverage)
+-else()
+-  message(STATUS "building tests is disabled")
+-endif()

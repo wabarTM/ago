@@ -1,5 +1,3 @@
-# this should be latest git version and i dont care about non-latest shenanigans
-
 EAPI=8
 
 inherit cmake toolchain-funcs git-r3
@@ -7,13 +5,13 @@ inherit cmake toolchain-funcs git-r3
 DESCRIPTION="A dynamic tiling Wayland compositor that doesn't sacrifice on its looks"
 HOMEPAGE="https://github.com/hyprwm/Hyprland"
 EGIT_REPO_URI="https://github.com/hyprwm/Hyprland.git"
-#EGIT_COMMIT="920353370bba555010506a1c0b204675c60362fe" # first bad, maybe fixed later?
-#EGIT_COMMIT="834f019bab5df85b912a7aab7054fc8306f7c52a"
-#EGIT_COMMIT="3bbbb5aaca3a79005f7c2fea2b7bba66e9da5ce8"
-#EGIT_COMMIT="09e195d1f293a876ce21a077af3d7c5047881b79"
+#EGIT_REPO_URI="https://github.com/vaxerski/Hyprland.git"
+#EGIT_BRANCH=""
+#EGIT_COMMIT=""
+
 LICENSE="BSD"
 SLOT="0"
-IUSE="X -guiutils systemd hyprpm xwmfix noengine"
+IUSE="X -guiutils systemd hyprpm noengine" # xwmfix
 
 RDEPEND="
 	dev-cpp/muParser
@@ -37,6 +35,8 @@ RDEPEND="
 	x11-libs/pango
 	x11-libs/pixman
 	x11-libs/libXcursor
+	dev-lang/lua:5.5
+	dev-lang/python
 	guiutils? ( gui-libs/hyprland-guiutils )
 	X? (
 		x11-libs/libxcb
@@ -48,12 +48,12 @@ RDEPEND="
 		dev-build/cmake
 		dev-vcs/git
 		virtual/pkgconfig
+		dev-cpp/glaze
 	)
 "
 
 DEPEND="
 	${RDEPEND}
-	dev-cpp/glaze
 	>=dev-libs/hyprland-protocols-0.6.0
 	>=dev-libs/wayland-protocols-1.41
 "
@@ -79,14 +79,17 @@ src_prepare() {
 	eapply "${FILESDIR}"/0000-remove-start-hyprland.patch
 	eapply "${FILESDIR}"/0001-no-watchdog.patch
 
-	if use xwmfix; then
-		eapply "${FILESDIR}"/0002-fix-xwayland.patch
-	fi
+	# fixed with discussion 12999 and by 0b13d398fe597c9b30beb8207828586718b8a9b0 commit
+	#if use xwmfix; then
+	#	eapply "${FILESDIR}"/0002-fix-xwayland.patch
+	#fi
 
 	if use noengine; then
 		printf "" > src/i18n/Engine.cpp
 		eapply "${FILESDIR}"/0003-only-english-in-i18n.patch
 	fi
+
+	eapply "${FILESDIR}"/0004-why.patch
 
 	eapply_user
 	default
@@ -97,13 +100,17 @@ src_configure() {
 	local mycmakeargs=(
 		# i have 0 fucking clues how to fix mutlilib issue,
 		# so i will just disable whole testing module
+		# Upd1:
+		# it appears it fixed itself after a while, but
+		# i will keep this in case of shenanigans
 		-DBUILD_TESTING:BOOL=false
 
-		#-DCMAKE_BUILD_TYPE:STRING=Debug
+		-DCMAKE_BUILD_TYPE:STRING=release
 
 		-DNO_XWAYLAND:STRING=$(usex X false true)
 		-DNO_SYSTEMD:STRING=$(usex systemd false true)
 		-DNO_HYPRPM:STRING=$(usex hyprpm false true)
+		-DNO_UWSM:STRING=true
     )
 
 	cmake_src_configure

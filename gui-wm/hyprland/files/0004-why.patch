@@ -1,0 +1,7 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -92,1 +92,1 @@
+-  add_compile_options(-O3)
++  add_compile_options(-O2)
+@@ -120,1 +120,0 @@
+-add_compile_options(-fno-lto)

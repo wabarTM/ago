@@ -5,7 +5,7 @@ DESCRIPTION="Wayland protocol extensions for Hyprland"
 HOMEPAGE="https://github.com/hyprwm/hyprland-protocols"
 
 
-EGIT_REPO_URI="https://github.com/hyprwm/${PN}.git"
+EGIT_REPO_URI="https://github.com/hyprwm/hyprland-protocols.git"
 LICENSE="BSD"
 SLOT="0"
 

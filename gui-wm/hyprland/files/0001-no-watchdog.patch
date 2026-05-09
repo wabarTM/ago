@@ -10,7 +10,7 @@
 -    if (safeMode)
 -        g_pCompositor->m_safeMode = true;
 -
--    if (!watchdogOk)
+-    if (!watchdogOk && !verifyConfig)
 -        Log::logger->log(Log::WARN, "WARNING: Hyprland is being launched without start-hyprland. This is highly advised against.");
 
     g_pCompositor->initServer(socketName, socketFd);
