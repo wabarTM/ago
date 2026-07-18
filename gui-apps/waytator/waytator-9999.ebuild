@@ -17,7 +17,6 @@ DEPEND="
 "
 
 BDEPEND="
-	|| ( >=sys-devel/gcc-15:* >=llvm-core/clang-19:* )
 	dev-build/cmake
 	dev-build/ninja
 	virtual/pkgconfig
@@ -30,10 +29,6 @@ src_prepare() {
 	sed -i 's/WAYTATOR_APP_ID "dev.faetalize.waytator"/WAYTATOR_APP_ID "Waytator"/' src/main.c
 	sed -i 's/dev.faetalize.waytator/waytator/g' src/dev.faetalize.waytator.desktop
 	cp "${FILESDIR}"/CMakeLists.txt ./
-
-	# Fucking gtk4
-	# Upd1: it fixed itself after updoot, fuck gtk
-	#cp "${FILESDIR}"/style.css src/ui/style.css
 
 	eapply_user
 	default

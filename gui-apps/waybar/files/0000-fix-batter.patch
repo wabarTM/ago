@@ -1,0 +1,15 @@
++++ a/meson.build
+--- b/meson.build
+@@ -208,2 +208,1 @@
+     src_files += files(
+-        'src/modules/battery.cpp',
++++ a/src/factory.cpp
+--- b/src/factory.cpp
+@@ -49,2 +49,1 @@
+ #if defined(__FreeBSD__) || defined(__linux__)
+-#include "modules/battery.hpp"
+@@ -139,4 +139,1 @@
+ #if defined(__FreeBSD__) || defined(__linux__)
+-    if (ref == "battery") {
+-      return new waybar::modules::Battery(id, bar_, config_[name]);
+-    }

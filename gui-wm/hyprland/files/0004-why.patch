@@ -3,5 +3,7 @@
 @@ -92,1 +92,1 @@
 -  add_compile_options(-O3)
 +  add_compile_options(-O2)
-@@ -120,1 +120,0 @@
+@@ -104,1 +104,0 @@
+-  -Wno-clobbered
+@@ -122,1 +122,0 @@
 -add_compile_options(-fno-lto)

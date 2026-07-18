@@ -6,8 +6,12 @@ DESCRIPTION="A dynamic tiling Wayland compositor that doesn't sacrifice on its l
 HOMEPAGE="https://github.com/hyprwm/Hyprland"
 EGIT_REPO_URI="https://github.com/hyprwm/Hyprland.git"
 #EGIT_REPO_URI="https://github.com/vaxerski/Hyprland.git"
+#EGIT_REPO_URI="https://github.com/ItsOhen/Hyprland.git"
+#EGIT_BRANCH="thefunbranch"
+#EGIT_REPO_URI=""
 #EGIT_BRANCH=""
 #EGIT_COMMIT=""
+#EGIT_REPO_URI="https://github.com/codenameone-akshat/Hyprland-submap-test.git"
 
 LICENSE="BSD"
 SLOT="0"
@@ -50,7 +54,10 @@ RDEPEND="
 		virtual/pkgconfig
 		dev-cpp/glaze
 	)
+	dev-libs/libei
+	dev-cpp/glaze
 "
+		# ^^^^^^^^ glaze needs to be >=7.0.2, it is in hyproevrlay, but i dont care enough to bother
 
 DEPEND="
 	${RDEPEND}
@@ -58,7 +65,7 @@ DEPEND="
 	>=dev-libs/wayland-protocols-1.41
 "
 BDEPEND="
-	|| ( >=sys-devel/gcc-15:* >=llvm-core/clang-19:* )
+	|| ( >=sys-devel/gcc-16:* >=llvm-core/clang-22:* )
 	app-misc/jq
 	dev-build/cmake
 	>=dev-util/hyprwayland-scanner-0.3.10
@@ -69,8 +76,8 @@ BDEPEND="
 pkg_setup() {
 	[[ ${MERGE_TYPE} == binary ]] && return
 
-	tc-check-min_ver gcc 15
-	tc-check-min_ver clang 19
+	tc-check-min_ver gcc 16
+	tc-check-min_ver clang 22
 }
 
 src_prepare() {
@@ -105,6 +112,11 @@ src_configure() {
 		# i will keep this in case of shenanigans
 		-DBUILD_TESTING:BOOL=false
 
+		# if you still get 1.6Gig build folder
+		# you need to change global build type since
+		# CMAKE_BUILD_TYPE="Release"
+		# gentoo what whatever fucking reason uses
+		# release with debug symbols
 		-DCMAKE_BUILD_TYPE:STRING=release
 
 		-DNO_XWAYLAND:STRING=$(usex X false true)

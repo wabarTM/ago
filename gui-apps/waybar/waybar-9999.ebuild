@@ -65,8 +65,12 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
-	#find . \( ! -regex '.*/\..*' \) -type f | LC_ALL=C xargs sed -i '' 's/foo/bar/g'
-	#rename -a 's/waybar/wabar/g' *
+	rm src/modules/battery.cpp
+	rm src/modules/battery.h
+	eapply "${FILESDIR}"/0000-fix-batter.patch
+
+
+
 	eapply_user
 }
 

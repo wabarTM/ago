@@ -1,7 +1,7 @@
 --- a/src/main.cpp
 +++ b/src/main.cpp
-@@ -213,14 +213,5 @@
-    reapZombieChildrenAutomatically();
+@@ -270,18 +270,8 @@
+     reapZombieChildrenAutomatically();
 
 -    bool watchdogOk = watchdogFd > 0;
 -
@@ -10,8 +10,12 @@
 -    if (safeMode)
 -        g_pCompositor->m_safeMode = true;
 -
+     if (startLocked) {
+         g_pCompositor->m_startLocked        = true;
+         g_pCompositor->m_startLockedCommand = startLockedCommand;
+     }
+
 -    if (!watchdogOk && !verifyConfig)
 -        Log::logger->log(Log::WARN, "WARNING: Hyprland is being launched without start-hyprland. This is highly advised against.");
-
-    g_pCompositor->initServer(socketName, socketFd);
-
+-
+     g_pCompositor->initServer(socketName, socketFd);
