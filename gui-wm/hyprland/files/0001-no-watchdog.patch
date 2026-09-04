@@ -16,6 +16,6 @@
      }
 
 -    if (!watchdogOk && !verifyConfig)
--        Log::logger->log(Log::WARN, "WARNING: Hyprland is being launched without start-hyprland. This is highly advised against.");
+-        LOG(Log::WARN, "WARNING: Hyprland is being launched without start-hyprland. This is highly advised against.");
 -
      g_pCompositor->initServer(socketName, socketFd);
