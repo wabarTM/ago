@@ -8,14 +8,14 @@ LICENSE="BSD"
 SLOT="0"
 
 RDEPEND="
-	gui-libs/hyprtoolkit
-	gui-libs/hyprutils:=
-	gui-libs/hyprland-qt-support
+        gui-libs/hyprtoolkit
+        gui-libs/hyprutils:=
+        gui-libs/hyprland-qt-support
 "
 
 DEPEND="${RDEPEND}"
 
 pkg_setup() {
-	tc-check-min_ver gcc 15
-	tc-check-min_ver clang 19
+        tc-check-min_ver gcc 15
+        tc-check-min_ver clang 19
 }

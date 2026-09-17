@@ -16,37 +16,37 @@ QA_PRESTRIPPED=".*"
 ECARGO_VENDOR="${WORKDIR}/vendor"
 
 pkg_setup() {
-	#llvm-r2_pkg_setup
-	rust_pkg_setup
+        #llvm-r2_pkg_setup
+        rust_pkg_setup
 }
 
 src_unpack() {
-	git-r3_src_unpack
-	cargo_live_src_unpack
+        git-r3_src_unpack
+        cargo_live_src_unpack
 }
 
 src_prepare() {
-	#sed -i 's/git = "[^ ]*"/version = "*"/' Cargo.toml || die
-	default
+        #sed -i 's/git = "[^ ]*"/version = "*"/' Cargo.toml || die
+        default
 }
 
 src_configure() {
-	cargo_src_configure # --no-default-features
+        cargo_src_configure # --no-default-features
 }
 
 src_compile() {
-	cargo_src_compile
+        cargo_src_compile
 }
 
 src_install() {
-	cargo_src_install
+        cargo_src_install
 
-	#dobin resources/niri-session
+        #dobin resources/niri-session
 
-	#insinto /usr/share/wayland-sessions
-	#doins resources/niri.desktop
+        #insinto /usr/share/wayland-sessions
+        #doins resources/niri.desktop
 
-	#insinto /usr/share/xdg-desktop-portal
-	#doins resources/niri-portals.conf
+        #insinto /usr/share/xdg-desktop-portal
+        #doins resources/niri-portals.conf
 }
 

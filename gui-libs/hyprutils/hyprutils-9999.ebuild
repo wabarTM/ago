@@ -10,7 +10,7 @@ LICENSE="BSD"
 SLOT="0"
 
 RDEPEND="
-	dev-cpp/gtest
+        dev-cpp/gtest
 "
 
 DEPEND="${RDEPEND}"

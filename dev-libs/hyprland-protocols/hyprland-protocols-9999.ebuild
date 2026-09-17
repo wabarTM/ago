@@ -10,14 +10,14 @@ LICENSE="BSD"
 SLOT="0"
 
 BDEPEND="
-	dev-util/wayland-scanner
-	virtual/pkgconfig
+        dev-util/wayland-scanner
+        virtual/pkgconfig
 "
 
 src_compile() {
-	cmake_src_compile
+        cmake_src_compile
 }
 
 src_install() {
-	cmake_src_install
+        cmake_src_install
 }

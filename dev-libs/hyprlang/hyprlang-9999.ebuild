@@ -13,9 +13,9 @@ DEPEND="${RDEPEND}"
 BDEPEND="|| ( >=sys-devel/gcc-15:* >=llvm-core/clang-19:* )"
 
 pkg_setup() {
-	[[ ${MERGE_TYPE} == binary ]] && return
+        [[ ${MERGE_TYPE} == binary ]] && return
 
-	tc-check-min_ver gcc 15
-	tc-check-min_ver clang 19
+        tc-check-min_ver gcc 15
+        tc-check-min_ver clang 19
 }
 

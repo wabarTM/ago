@@ -9,15 +9,15 @@ LICENSE="GPL-3"
 SLOT="0"
 
 RDEPEND="
-	app-misc/jq
-	gui-apps/grim
-	gui-apps/slurp
-	gui-apps/wl-clipboard
-	gui-wm/hyprland
-	x11-libs/libnotify
+        app-misc/jq
+        gui-apps/grim
+        gui-apps/slurp
+        gui-apps/wl-clipboard
+        gui-wm/hyprland
+        x11-libs/libnotify
 "
 
 src_install() {
-	dobin hyprshot
-	einstalldocs
+        dobin hyprshot
+        einstalldocs
 }

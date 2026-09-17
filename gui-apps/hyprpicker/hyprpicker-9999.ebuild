@@ -8,18 +8,18 @@ LICENSE="BSD"
 SLOT="0"
 
 RDEPEND="
-	dev-libs/wayland
-	>=dev-util/hyprwayland-scanner-0.4.2
-	gui-libs/hyprutils:=
-	x11-libs/cairo
-	x11-libs/libxkbcommon
-	x11-libs/pango
+        dev-libs/wayland
+        >=dev-util/hyprwayland-scanner-0.4.2
+        gui-libs/hyprutils:=
+        x11-libs/cairo
+        x11-libs/libxkbcommon
+        x11-libs/pango
 "
 DEPEND="${RDEPEND}"
 
 BDEPEND="
-	dev-libs/wayland-protocols
-	dev-util/wayland-scanner
-	media-libs/libglvnd
-	media-libs/libjpeg-turbo
+        dev-libs/wayland-protocols
+        dev-util/wayland-scanner
+        media-libs/libglvnd
+        media-libs/libjpeg-turbo
 "

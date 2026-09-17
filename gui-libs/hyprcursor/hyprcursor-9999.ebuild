@@ -9,9 +9,9 @@ LICENSE="BSD"
 SLOT="0"
 
 RDEPEND="
-	dev-cpp/tomlplusplus
-	>=dev-libs/hyprlang-0.4.2
-	dev-libs/libzip
-	gnome-base/librsvg:2
-	x11-libs/cairo
+        dev-cpp/tomlplusplus
+        >=dev-libs/hyprlang-0.4.2
+        dev-libs/libzip
+        gnome-base/librsvg:2
+        x11-libs/cairo
 "

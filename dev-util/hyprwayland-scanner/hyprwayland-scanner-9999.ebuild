@@ -12,5 +12,5 @@ RDEPEND=">=dev-libs/pugixml-1.14"
 DEPEND="${RDEPEND}"
 
 pkg_setup() {
-	[[ ${MERGE_TYPE} == binary ]] && return
+        [[ ${MERGE_TYPE} == binary ]] && return
 }

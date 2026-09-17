@@ -9,23 +9,23 @@ LICENSE="BSD"
 SLOT="0"
 
 RDEPEND="
-	dev-cpp/sdbus-c++:0/2
-	>=dev-libs/hyprlang-0.4.0
-	dev-libs/wayland
-	gui-libs/hyprutils:=
+        dev-cpp/sdbus-c++:0/2
+        >=dev-libs/hyprlang-0.4.0
+        dev-libs/wayland
+        gui-libs/hyprutils:=
 "
 DEPEND="
-	${RDEPEND}
-	>=dev-libs/hyprland-protocols-0.6.0
-	dev-libs/wayland-protocols
+        ${RDEPEND}
+        >=dev-libs/hyprland-protocols-0.6.0
+        dev-libs/wayland-protocols
 "
 
 BDEPEND="
-	dev-util/wayland-scanner
-	virtual/pkgconfig
+        dev-util/wayland-scanner
+        virtual/pkgconfig
 "
 
 src_prepare() {
-	sed -i "/add_compile_options(-O3)/d" "CMakeLists.txt" || die
-	cmake_src_prepare
+        sed -i "/add_compile_options(-O3)/d" "CMakeLists.txt" || die
+        cmake_src_prepare
 }

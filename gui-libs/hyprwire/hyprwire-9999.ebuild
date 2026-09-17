@@ -13,16 +13,16 @@ DEPEND="${RDEPEND}"
 BDEPEND=""
 
 pkg_setup() {
-	tc-check-min_ver gcc 15
-	tc-check-min_ver clang 19
+        tc-check-min_ver gcc 15
+        tc-check-min_ver clang 19
 }
 
 src_prepare() {
-	rm -rf tests/
+        rm -rf tests/
 
-	eapply "${FILESDIR}"/0000-remove-tests.patch
+        eapply "${FILESDIR}"/0000-remove-tests.patch
 
-	eapply_user
-	default
-	cmake_src_prepare
+        eapply_user
+        default
+        cmake_src_prepare
 }

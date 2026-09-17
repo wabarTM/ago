@@ -9,18 +9,18 @@ LICENSE="BSD"
 SLOT="0"
 
 DEPEND="
-	dev-qt/qtbase:6[gui,widgets]
-	dev-qt/qtdeclarative:6
-	gui-libs/hyprutils:=
-	sys-auth/polkit
-	sys-auth/polkit-qt[qt6]
+        dev-qt/qtbase:6[gui,widgets]
+        dev-qt/qtdeclarative:6
+        gui-libs/hyprutils:=
+        sys-auth/polkit
+        sys-auth/polkit-qt[qt6]
 "
 
 RDEPEND="
-	${DEPEND}
-	gui-libs/hyprland-qt-support
+        ${DEPEND}
+        gui-libs/hyprland-qt-support
 "
 
 BDEPEND="
-	virtual/pkgconfig
+        virtual/pkgconfig
 "
