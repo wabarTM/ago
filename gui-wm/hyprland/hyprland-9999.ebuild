@@ -22,7 +22,7 @@ EGIT_REPO_URI="https://github.com/hyprwm/Hyprland.git"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="X -guiutils systemd hyprpm noengine" # xwmfix
+IUSE="X -guiutils systemd hyprpm noengine"
 
 RDEPEND="
         dev-cpp/muParser
@@ -93,11 +93,6 @@ src_prepare() {
         eapply "${FILESDIR}"/0000-remove-start-hyprland.patch
         eapply "${FILESDIR}"/0001-no-watchdog.patch
 
-        # fixed with discussion 12999 and by 0b13d398fe597c9b30beb8207828586718b8a9b0 commit
-        #if use xwmfix; then
-        #        eapply "${FILESDIR}"/0002-fix-xwayland.patch
-        #fi
-
         if use noengine; then
                 printf "" > src/i18n/Engine.cpp
                 eapply "${FILESDIR}"/0003-only-english-in-i18n.patch
@@ -119,11 +114,9 @@ src_configure() {
                 # i will keep this in case of shenanigans
                 -DBUILD_TESTING:BOOL=false
 
-                # if you still get 1.6Gig build folder
-                # you need to change global build type since
+                # if you still get 1.6Gig build folder you need to change global build type since
                 # CMAKE_BUILD_TYPE="Release"
-                # gentoo what whatever fucking reason uses
-                # release with debug symbols
+                # gentoo devs for whatever fucking reason use release with debug symbols
                 -DCMAKE_BUILD_TYPE:STRING=release
 
                 -DNO_XWAYLAND:STRING=$(usex X false true)

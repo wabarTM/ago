@@ -1,6 +1,3 @@
-# Copyright 1999-2026 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
-
 EAPI=8
 
 # NOTE: No Gentoo autotools-patched tarball exists for 5.5 yet
