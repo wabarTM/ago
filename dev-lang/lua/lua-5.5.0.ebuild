@@ -102,7 +102,7 @@ src_install() {
         Requires:
         Libs: -L\${libdir} -llua -lm -ldl
         Cflags: -I\${includedir}
-        EOF
+		EOF
         insinto "/usr/$(get_libdir)/pkgconfig"
         doins "${pc_file}"
 
@@ -112,7 +112,6 @@ src_install() {
 }
 
 pkg_postinst() {
-        eselect lua set --if-unset "${PN}${SLOT}"
-
-        optfeature "Lua support for Emacs" app-emacs/lua-mode
+		eselect lua set --if-unset "${PN}${SLOT}"
+		optfeature "Lua support for Emacs" app-emacs/lua-mode
 }
