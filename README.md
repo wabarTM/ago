@@ -1,4 +1,5 @@
-ago - short for another-gentoo-overlya
+ago — short for another-gentoo-overlya
 
-Smol overlay coz i hate waiting for other overlay maintainers to wake up and fix their ebuild
+Smol (apparently not) overlay because I hate waiting for other overlay maintainers to wake up and fix their ebuild
+
 Thx fufexan :heart:
