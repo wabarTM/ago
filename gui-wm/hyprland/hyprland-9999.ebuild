@@ -23,7 +23,7 @@ EGIT_REPO_URI="https://github.com/hyprwm/Hyprland.git"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="X -guiutils systemd hyprpm noengine"
+IUSE="X -guiutils systemd rtkit hyprpm noengine"
 
 RDEPEND="
         dev-cpp/muParser
@@ -122,6 +122,7 @@ src_configure() {
 
                 -DNO_XWAYLAND:STRING=$(usex X false true)
                 -DNO_SYSTEMD:STRING=$(usex systemd false true)
+                -DNO_RTKIT:STRING=$(usex rtkit false true)
                 -DNO_HYPRPM:STRING=$(usex hyprpm false true)
                 -DNO_UWSM:STRING=true
     )
