@@ -1,0 +1,13 @@
+--- a/src/desktop/view/Window.cpp
++++ b/src/desktop/view/Window.cpp
+@@ -2634,10 +2634,6 @@ void CWindow::destroyWindow() {
+         g_pCompositor->removeWindowFromVectorSafe(m_self.lock()); // most likely X11 unmanaged or sumn
+     }
+ 
+-    m_listeners.unmap.reset();
+-    m_listeners.destroy.reset();
+-    m_listeners.map.reset();
+-    m_listeners.commit.reset();
+ }
+ 
+ void CWindow::activateX11() {
