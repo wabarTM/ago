@@ -5,10 +5,11 @@ inherit cmake toolchain-funcs git-r3
 DESCRIPTION="A dynamic tiling Wayland compositor that doesn't sacrifice on its looks"
 HOMEPAGE="https://github.com/hyprwm/Hyprland"
 EGIT_REPO_URI="https://github.com/hyprwm/Hyprland.git"
-#EGIT_REPO_URI="https://github.com/vaxerski/Hyprland.git"
+EGIT_REPO_URI="https://github.com/vaxerski/Hyprland.git"
 #EGIT_BRANCH="binds-fucker-fuck-hyprland-development-moment-XDDDDDDDDDDDDDDDDD"
 #EGIT_BRANCH="more-blur-XDDDDDDDDDDDDDDDDDDDDDD"
 #EGIT_BRANCH="fix-clang-again-16583"
+EGIT_BRANCH="per-corner-radii"
 #EGIT_REPO_URI="https://github.com/ItsOhen/Hyprland.git"
 #EGIT_BRANCH="thefunbranch"
 #EGIT_REPO_URI=""
@@ -23,7 +24,7 @@ EGIT_REPO_URI="https://github.com/hyprwm/Hyprland.git"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="X -guiutils systemd rtkit hyprpm noengine"
+IUSE="X -guiutils systemd hyprpm noengine"
 
 RDEPEND="
         dev-cpp/muParser
@@ -122,7 +123,6 @@ src_configure() {
 
                 -DNO_XWAYLAND:STRING=$(usex X false true)
                 -DNO_SYSTEMD:STRING=$(usex systemd false true)
-                -DNO_RTKIT:STRING=$(usex rtkit false true)
                 -DNO_HYPRPM:STRING=$(usex hyprpm false true)
                 -DNO_UWSM:STRING=true
     )

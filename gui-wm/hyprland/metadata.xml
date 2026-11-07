@@ -8,7 +8,6 @@
     <flag name="X">Enable Xwayland support</flag>
     <flag name="guiutils">Enable some menus</flag>
     <flag name="systemd">Enable use of systemd-specific libraries and features like socket activation or session tracking</flag>
-    <flag name="rtkit">Enable rtkit support</flag>
     <flag name="hyprpm">Enable the hyprpm (hypr plugin manager)</flag>
     <flag name="noengine">Removes all i18n translation except english</flag>
   </use>
