@@ -1,6 +1,6 @@
 EAPI=8
 
-inherit meson cmake toolchain-funcs git-r3
+inherit meson cmake git-r3
 
 DESCRIPTION="Wayland image annotation tool"
 HOMEPAGE="https://github.com/faetalize/waytator"
@@ -10,7 +10,7 @@ SLOT="0"
 RDEPEND="
         gui-libs/gtk:4
         gui-libs/libadwaita:1
-        gui-libs/gtk-layer-shell
+        gui-libs/gtk4-layer-shell
         dev-libs/wayland
         media-video/ffmpeg
         media-libs/rubberband
@@ -32,18 +32,9 @@ BDEPEND="
         dev-libs/wayland-protocols
 "
 src_prepare() {
-#        # cmake shenanigans
-#        sed -i 's/@WAYTATOR_VERSION@/"@PROJECT_VERSION@"/g' src/waytator-config.h.in
-#        cp "${FILESDIR}"/CMakeLists.txt ./
-
         # Consistencty, fml
         sed -i 's/WAYTATOR_APP_ID "dev.faetalize.waytator"/WAYTATOR_APP_ID "Waytator"/' src/main.c
         sed -i 's/dev.faetalize.waytator/waytator/g' src/dev.faetalize.waytator.desktop
-
-
-
-        sed -i '1i #include <glib-object.h>' src/main.c
-        sed -i 's/gtk4-layer-shell/gtk-layer-shell/g' meson.build
 
         eapply_user
         default
